@@ -7,7 +7,8 @@ describe DockingStation do
   end
 
   it 'should return a bike' do
-    expect(subject.release_bike).to be_a(Bike)
+    bike = subject.release_bike
+    expect(bike).to be_working
   end
   
 end
