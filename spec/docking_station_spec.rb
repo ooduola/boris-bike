@@ -20,8 +20,8 @@ describe DockingStation do
     end
   end
 
-  # context '#bike' do
-  #   it { is_expected.to respond_to(:bike) }
-  # end
+  context '#bike' do
+    it { is_expected.to respond_to(:bike) }
+  end
   
 end
