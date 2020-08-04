@@ -12,7 +12,7 @@ describe DockingStation do
     end
 
     it 'raises an error if no bikes are available' do
-      expect { subject.release_bike }.to raise_error 
+      expect { subject.release_bike }.to raise_error 'no bikes avaiable'
     end
 
     it 'should return a bike' do
