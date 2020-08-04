@@ -75,3 +75,15 @@ As a maintainer of the system,
 So that I can control the distribution of bikes,
 I'd like docking stations not to accept more bikes than their capacity.
 ```
+
+## Program assumption
+
+- The capacity of bike for each station is one.
+
+## User story
+
+```
+As a system maintainer,
+So that I can plan the distribution of bikes,
+I want a docking station to have a default capacity of 20 bikes.
+```
