@@ -13,6 +13,15 @@ describe DockingStation do
 
   context '#dock' do
     it { is_expected.to respond_to(:dock).with(1).argument }
+
+    it 'returns a bike after being docked' do
+      bike = Bike.new
+      expect(subject.dock(bike)).to eq bike
+    end
   end
+
+  # context '#bike' do
+  #   it { is_expected.to respond_to(:bike) }
+  # end
   
 end

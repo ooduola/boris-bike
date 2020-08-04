@@ -50,3 +50,8 @@ I want to see a bike that has been docked
 | Person          |                          |
 | Bike            | working?                 |
 | Docking_station | release_bike, dock(Bike) |
+
+```
+Bike < ---- .new ----- > a Bike
+DockingStation <-- dock(Bike) --> a Bike
+```
