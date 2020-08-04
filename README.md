@@ -55,3 +55,11 @@ I want to see a bike that has been docked
 Bike < ---- .new ----- > a Bike
 DockingStation <-- dock(Bike) --> a Bike
 ```
+
+## User story
+
+```
+As a member of the public,
+So that I am not confused and charged unnecessarily,
+I'd like docking stations not to release bikes when there are none available.
+```
