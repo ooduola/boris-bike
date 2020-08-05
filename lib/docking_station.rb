@@ -15,7 +15,17 @@ class DockingStation
   end
 
   def dock(bike)
-    raise "At full capacity" if @bike.length >= STATION_CAPACITY
+    raise "At full capacity" if full?
     @bike << bike
+  end
+
+  private 
+
+  def full?
+    @bike.length >= STATION_CAPACITY
+  end
+
+  def empty?
+    @bike.empty? 
   end
 end
