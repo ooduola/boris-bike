@@ -51,5 +51,10 @@ describe DockingStation do
     it 'returns the full capacity of the station' do
       expect(subject.capacity).to eq DockingStation::STATION_CAPACITY
     end
+
+    it 'can change capacity of station' do
+      subject = DockingStation.new(3)
+      expect(subject.capacity).to eq 3
+    end
   end
 end
