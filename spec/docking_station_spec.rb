@@ -35,6 +35,12 @@ describe DockingStation do
       subject.capacity.times { subject.dock(Bike.new) }
       expect { subject.dock(Bike.new) }.to raise_error "At full capacity"
     end
+
+    it 'raises an error when station has capacity of 30' do
+      subject = DockingStation.new(30)
+      30.times { subject.dock(Bike.new) }
+      expect { subject.dock(Bike.new) }.to raise_error "At full capacity"
+    end
   end
 
   context '#bike' do
