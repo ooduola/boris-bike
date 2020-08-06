@@ -23,7 +23,6 @@ describe DockingStation do
     end
   end
 
-
   context '#dock' do
     it { is_expected.to respond_to(:dock).with(1).argument }
 
@@ -46,6 +45,11 @@ describe DockingStation do
       subject.dock(bike)
       expect(subject.bike).to eq [bike]
     end
+  end 
+
+  context '#capacity' do
+    it 'returns the full capacity of the station' do
+      expect(subject.capacity).to eq DockingStation::STATION_CAPACITY
+    end
   end
-  
 end
