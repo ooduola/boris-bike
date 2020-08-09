@@ -5,10 +5,10 @@ class Bike
   end
 
   def report_broken
+    @broken = true
   end
 
   def broken?
-
-    true
+    @broken
   end
 end
