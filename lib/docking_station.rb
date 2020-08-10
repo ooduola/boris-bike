@@ -11,7 +11,8 @@ class DockingStation
   end
 
   def release_bike
-    raise "no bikes avaiable" if empty?
+    raise "no bikes avaiable" if empty? 
+    raise "bike is broken" if broken?
     @bike.pop
   end
 
@@ -28,5 +29,9 @@ class DockingStation
 
   def empty?
     @bike.empty? 
+  end
+
+  def broken?
+    @bike.last.broken?
   end
 end
