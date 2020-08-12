@@ -2,11 +2,14 @@ require 'docking_station'
 
 describe DockingStation do
 
+  let(:bike) { double :bike }
+
   context '#release_bike' do
     it { is_expected.to respond_to(:release_bike) }
 
     it 'releases docked bike' do
-      bike = double(:bike)
+      allow(bike).to receive(:working?).and_return(true)
+      allow(bike).to receive(:broken?).and_return(false)
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
@@ -16,15 +19,15 @@ describe DockingStation do
     end
 
     it 'should return a bike' do
-      bike = double(:bike)
+      allow(bike).to receive(:working?).and_return(true)
+      allow(bike).to receive(:broken?).and_return(false)
       subject.dock(bike)
       subject.release_bike
       expect(bike).to be_working
     end
 
     it 'should not release broken bike' do
-      bike = double(:bike)
-      bike.report_broken
+      allow(bike).to receive(:broken?).and_return(true)
       subject.dock(bike)
       expect { subject.release_bike }.to raise_error 'bike is broken'
     end
@@ -34,7 +37,6 @@ describe DockingStation do
     it { is_expected.to respond_to(:dock).with(1).argument }
 
     it 'returns a bike after being docked' do
-      bike = double(:bike)
       expect(subject.dock(bike)).to eq [bike]
     end
 
@@ -45,8 +47,8 @@ describe DockingStation do
 
     it 'raises an error when station has capacity of 30' do
       subject = DockingStation.new(30)
-      30.times { subject.dock(double(:bike)) }
-      expect { subject.dock(double(:bike)) }.to raise_error "At full capacity"
+      30.times { subject.dock(bike) }
+      expect { subject.dock(bike) }.to raise_error "At full capacity"
     end
   end
 
@@ -54,7 +56,6 @@ describe DockingStation do
     it { is_expected.to respond_to(:bike) }
 
     it 'returns docked bike' do
-      bike = double(:bike)
       subject.dock(bike)
       expect(subject.bike).to eq [bike]
     end
@@ -69,9 +70,8 @@ describe DockingStation do
       subject = DockingStation.new(3)
       expect(subject.capacity).to eq 3
     end
-
-    it 'raises error if the capacity is reached' do
-      
-    end
+    # it 'raises error if the capacity is reached' do
+     
+    # end
   end
 end
