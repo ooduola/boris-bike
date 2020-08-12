@@ -9,7 +9,6 @@ describe DockingStation do
 
     it 'releases docked bike' do
       allow(bike).to receive(:working?).and_return(true)
-      allow(bike).to receive(:broken?).and_return(false)
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
@@ -20,14 +19,13 @@ describe DockingStation do
 
     it 'should return a bike' do
       allow(bike).to receive(:working?).and_return(true)
-      allow(bike).to receive(:broken?).and_return(false)
       subject.dock(bike)
       subject.release_bike
       expect(bike).to be_working
     end
 
     it 'should not release broken bike' do
-      allow(bike).to receive(:broken?).and_return(true)
+      allow(bike).to receive(:working?).and_return(false)
       subject.dock(bike)
       expect { subject.release_bike }.to raise_error 'bike is broken'
     end
@@ -41,8 +39,8 @@ describe DockingStation do
     end
 
     it ' raises error when station has more than default capacity 20' do
-      subject.capacity.times { subject.dock(double(:bike)) }
-      expect { subject.dock(Bike.new) }.to raise_error "At full capacity"
+      subject.capacity.times { subject.dock(bike) }
+      expect { subject.dock(bike) }.to raise_error "At full capacity"
     end
 
     it 'raises an error when station has capacity of 30' do

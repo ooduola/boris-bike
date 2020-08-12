@@ -15,5 +15,4 @@ describe Bike do
     subject.report_broken
     expect(subject).not_to be_working
   end
-
 end
