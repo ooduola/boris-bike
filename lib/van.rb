@@ -1,5 +1,10 @@
 class Van
-  def collect_broken_bikes(bike)
 
+  def initialize
+    @bike = nil
+  end
+
+  def collect_broken_bikes(bike)
+    @bike = bike
   end
 end
