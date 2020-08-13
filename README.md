@@ -125,8 +125,8 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 | Object     | Messages                    |
 | ---------- | --------------------------- |
 | Maintainer |                             |
-| Vans       | take_broken_bikes(station), |
-|            | deliver_bike(garage),       |
-|            | collect_bikes(garage),      |
+| Vans       | collect_broken_bikes(bike), |
+|            | deliver(garage),            |
+|            | collect_bikes(bike),        |
 |            | distribute_bikes(station)   |
 | Garages    |                             |
