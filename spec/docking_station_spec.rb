@@ -5,10 +5,10 @@ describe DockingStation do
   let(:bike) { double :bike }
 
   context '#release_bike' do
-    it { is_expected.to respond_to(:release_bike) }
+    it { is_expected.to respond_to :release_bike }
 
     it 'releases docked bike' do
-      allow(bike).to receive(:working?).and_return(true)
+      allow(bike).to receive(:working?) { true }
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
@@ -18,14 +18,14 @@ describe DockingStation do
     end
 
     it 'should return a bike' do
-      allow(bike).to receive(:working?).and_return(true)
+      allow(bike).to receive(:working?) { true }
       subject.dock(bike)
       subject.release_bike
       expect(bike).to be_working
     end
 
     it 'should not release broken bike' do
-      allow(bike).to receive(:working?).and_return(false)
+      allow(bike).to receive(:working?) { false }
       subject.dock(bike)
       expect { subject.release_bike }.to raise_error 'bike is broken'
     end
